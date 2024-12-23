@@ -1,6 +1,8 @@
 import unittest
 from unittest import mock
+
 from hrid import HRID
+
 
 class TestGenerateFunction(unittest.TestCase):
 
@@ -8,33 +10,33 @@ class TestGenerateFunction(unittest.TestCase):
         self.hrid = HRID()
         self.hrid.delimiter = ', '
         self.hrid.random = mock.Mock()
+        self.hrid.random.choice.side_effect = lambda x: x[0]
 
     def test_string_elements_only(self):
-        self.hrid.phrasefmt = ['hello', 'world']
+        self.hrid._elements = [['hello'], ['world']]
         expected_output = 'hello, world'
         self.assertEqual(self.hrid.generate(), expected_output)
 
     def test_list_elements_only(self):
-        self.hrid.phrasefmt = [['hello', 'hi'], ['world', 'earth']]
-        self.hrid.random.choice.side_effect = ['hello', 'world']
+        self.hrid._elements = [['hello', 'hi'], ['world', 'earth']]
         expected_output = 'hello, world'
         self.assertEqual(self.hrid.generate(), expected_output)
 
     def test_mixed_string_and_list_elements(self):
-        self.hrid.phrasefmt = ['hello', ['world', 'earth'], 'again']
-        self.hrid.random.choice.return_value = 'world'
+        self.hrid._elements = [['hello'], ['world', 'earth'], ['again']]
         expected_output = 'hello, world, again'
         self.assertEqual(self.hrid.generate(), expected_output)
 
-    def test_empty_phrasefmt(self):
-        self.hrid.phrasefmt = []
+    def test_empty_elements(self):
+        self.hrid._elements = []
         expected_output = ''
         self.assertEqual(self.hrid.generate(), expected_output)
 
-    def test_none_phrasefmt(self):
-        self.hrid.phrasefmt = None
+    def test_none_elements(self):
+        self.hrid._elements = None
         with self.assertRaises(TypeError):
             self.hrid.generate()
+
 
 if __name__ == '__main__':
     unittest.main()
