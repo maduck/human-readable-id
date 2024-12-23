@@ -53,9 +53,9 @@ class HRID:
         :param element: The element to transform.
         :return: A list of words.
         """
-        if element in WORD_LISTS:
-            return WORD_LISTS[element]
         if isinstance(element, str):
+            if element in WORD_LISTS:
+                return WORD_LISTS[element]
             return [element]
         return element
 

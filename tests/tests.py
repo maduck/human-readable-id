@@ -1,16 +1,29 @@
 import unittest
 from unittest import mock
 
-from hrid import HRID
-
+import hrid
 
 class TestGenerateFunction(unittest.TestCase):
 
     def setUp(self):
-        self.hrid = HRID()
+        self.hrid = hrid.HRID()
         self.hrid.delimiter = ', '
         self.hrid.random = mock.Mock()
         self.hrid.random.choice.side_effect = lambda x: x[0]
+
+    def test_transform_string_element(self):
+        element = 'adjective'
+        expected_output = hrid.WORD_LISTS['adjective']
+        self.assertEqual(self.hrid._transform_element(element), expected_output)
+
+    def test_transform_list_element(self):
+        element = ['hello', 'hi']
+        self.assertEqual(self.hrid._transform_element(element), element)
+
+    def test_transform_unknown_element(self):
+        element = 'unknown'
+        expected_output = [element]
+        self.assertEqual(self.hrid._transform_element(element), expected_output)
 
     def test_string_elements_only(self):
         self.hrid._elements = [['hello'], ['world']]
