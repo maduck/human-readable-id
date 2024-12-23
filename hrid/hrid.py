@@ -18,8 +18,7 @@ class HRID:
     def __init__(self, delimiter='-', hridfmt=('adjective', 'noun', 'verb', 'adverb'), seed=None):
         self.delimiter = delimiter
         self.phrasefmt = list()
-        random_args = (s for s in (seed, ) if s)
-        self.random = random.Random(*random_args)
+        self.random = random.Random(seed)
         for element in hridfmt:
             self.phrasefmt.append(DICTIONARY.get(element, element))
 
