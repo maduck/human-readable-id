@@ -15,8 +15,8 @@ DICTIONARY = {
 
 
 class HRID:
-    def __init__(self, delimeter='-', hridfmt=('adjective', 'noun', 'verb', 'adverb'), seed=None):
-        self.delimeter = delimeter
+    def __init__(self, delimiter='-', hridfmt=('adjective', 'noun', 'verb', 'adverb'), seed=None):
+        self.delimiter = delimiter
         self.phrasefmt = list()
         random_args = (s for s in (seed, ) if s)
         self.random = random.Random(*random_args)
@@ -31,4 +31,4 @@ class HRID:
             if isinstance(element, (list)):
                 phrases.append(self.random.choice(element))
 
-        return self.delimeter.join(phrases)
+        return self.delimiter.join(phrases)

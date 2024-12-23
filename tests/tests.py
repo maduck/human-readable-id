@@ -6,7 +6,7 @@ class TestGenerateFunction(unittest.TestCase):
 
     def setUp(self):
         self.hrid = HRID()
-        self.hrid.delimeter = ', '
+        self.hrid.delimiter = ', '
         self.hrid.random = mock.Mock()
 
     def test_string_elements_only(self):
