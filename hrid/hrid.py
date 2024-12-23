@@ -1,10 +1,10 @@
 import random
 from typing import Iterable, Optional
 
-from .adjectives import ADJECTIVES
-from .adverbs import ADVERBS
-from .nouns import ANIMALS, FLOWERS, NOUNS
-from .verbs import VERBS
+from hrid.adjectives import ADJECTIVES
+from hrid.adverbs import ADVERBS
+from hrid.nouns import ANIMALS, FLOWERS, NOUNS
+from hrid.verbs import VERBS
 
 WORD_LISTS = {
     'adjective': ADJECTIVES,
