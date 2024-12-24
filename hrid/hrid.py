@@ -1,20 +1,7 @@
 import random
 from typing import Iterable, Optional
 
-from hrid.adjectives import ADJECTIVES
-from hrid.adverbs import ADVERBS
-from hrid.nouns import ANIMALS, FLOWERS, NOUNS
-from hrid.verbs import VERBS
-
-WORD_LISTS = {
-    'adjective': ADJECTIVES,
-    'noun': NOUNS,
-    'verb': VERBS,
-    'adverb': ADVERBS,
-    'number': [str(i) for i in range(10, 99)],
-    'animal': ANIMALS,
-    'flower': FLOWERS,
-}
+from hrid.word_lists import WORD_LISTS
 
 
 class HRID:

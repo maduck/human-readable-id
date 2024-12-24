@@ -3,6 +3,7 @@ from unittest import mock
 
 import hrid
 
+
 class TestGenerateFunction(unittest.TestCase):
 
     def setUp(self):
@@ -13,7 +14,7 @@ class TestGenerateFunction(unittest.TestCase):
 
     def test_transform_string_element(self):
         element = 'adjective'
-        expected_output = hrid.WORD_LISTS['adjective']
+        expected_output = hrid.word_lists.WORD_LISTS['adjective']
         self.assertEqual(self.hrid._transform_element(element), expected_output)
 
     def test_transform_list_element(self):
