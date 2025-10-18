@@ -642,8 +642,6 @@ VERBS = [
   "memorised",
   "mend",
   "mended",
-  "mess up",
-  "messed up",
   "milk",
   "milked",
   "mine",
